@@ -1,14 +1,8 @@
 resources:
-  - name: nginx-image-3
+  - name: nginx-image
     type: image
     integration: "docker-subint"
     pointer:
       sourceName: "ankul/nginx"
     seed:
       versionName: prod.10
-
-  - name: ddc-cluster-3
-    type: cluster
-    integration: "ddc-subint"
-    pointer:
-      sourceName: "ddc-cluster"
