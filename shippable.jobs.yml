@@ -1,13 +1,6 @@
 jobs:
-  - name: nginx-manifest-3
+  - name: nginx-manifest
     type: manifest
     steps:
-      - IN: nginx-image-3
-      - TASK: managed
-
-  - name: ddc-deploy-3
-    type: deploy
-    steps:
-      - IN: nginx-manifest-3
-      - IN: ddc-cluster-3
+      - IN: nginx-image
       - TASK: managed
