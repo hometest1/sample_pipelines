@@ -71,8 +71,9 @@ jobs:
     type: runSh
     steps:
       - IN: runSh_4
-      - IN: runSh_7
-      - IN: runSh_9    
+      - IN: runSh_7 
       - TASK:
         - script: sleep 55
         - script: echo versionName=hello_$BUILD_NUMBER > $JOB_STATE/runSh_11.env
+    flags: 
+      - random_one
