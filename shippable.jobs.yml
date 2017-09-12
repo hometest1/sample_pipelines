@@ -11,7 +11,6 @@ jobs:
              options: -m 1g      #optional
         - script: docker ps -a    
         - script: ls -al $MYREPO_STATE
-      - OUT: myImage
       
   - name: runSh_1
     type: runSh
