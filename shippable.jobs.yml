@@ -1,4 +1,18 @@
 jobs:
+  - name: myRunSh
+    type: runSh
+    steps:
+      - IN: nginx-image
+      - TASK:
+        - boot:
+             imageName: trriplejay/simpleserver
+             imageTag: master.58
+             pull: true               #optional
+             options: -m 1g      #optional
+        - script: docker ps -a    
+        - script: ls -al $MYREPO_STATE
+      - OUT: myImage
+      
   - name: runSh_1
     type: runSh
     allowPublicAccess: true
