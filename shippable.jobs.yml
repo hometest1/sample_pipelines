@@ -4,3 +4,9 @@ jobs:
     steps:
       - IN: nginx-image
       - TASK: managed
+
+  - name: sample_node_runCI
+    type: runCI
+    steps:
+      - IN: nginx-manifest
+    flags: some_random_runCI
