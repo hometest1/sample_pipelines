@@ -5,9 +5,19 @@ jobs:
       - IN: nginx-image-new
       - TASK: managed
 
+  - name: nginx-manifest-new-2
+    type: manifest
+    steps:
+      - IN: nginx-image-new
+      - TASK: managed
+
   - name: ddc-deploy-new
     type: deploy
     steps:
       - IN: nginx-manifest-new
+      - IN: nginx-manifest-new-2      
       - IN: ddc-cluster-new
       - TASK: managed
+    flags:
+      - some_flags
+      - some_more_flags
