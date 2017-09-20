@@ -15,6 +15,24 @@ resources:
     seed:
       versionName: prod.9
 
+  - name: replicas
+    type: replicas
+    version:
+      count: 2
+
+  - name: params
+    type: params
+    version:
+      params:
+        API_URL: https://localhost:3000
+        WWW_URL: https://localhost:8080
+
+  - name: dockerOptions
+    type: dockerOptions
+    version:
+      portMappings:
+        - "80:80/tcp"  
+
   - name: ddc-cluster
     type: cluster
     integration: "ddc-subint"
