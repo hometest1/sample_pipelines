@@ -21,5 +21,6 @@ jobs:
       - IN: man-prod10
       - IN: ddc-cluster
       - TASK: managed
+        deployMethod: scale
     flags:
       - ddc
