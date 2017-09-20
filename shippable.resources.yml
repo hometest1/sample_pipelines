@@ -1,5 +1,5 @@
 resources:
-  - name: nginx-image-new
+  - name: nginx-prod10
     type: image
     integration: "docker-subint"
     pointer:
@@ -7,7 +7,15 @@ resources:
     seed:
       versionName: prod.10
 
-  - name: ddc-cluster-new
+  - name: nginx-prod9
+    type: image
+    integration: "docker-subint"
+    pointer:
+      sourceName: "ankul/nginx"
+    seed:
+      versionName: prod.9
+
+  - name: ddc-cluster
     type: cluster
     integration: "ddc-subint"
     pointer:
