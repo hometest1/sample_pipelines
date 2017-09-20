@@ -19,6 +19,7 @@ jobs:
     steps:
       - IN: man-prod9  
       - IN: man-prod10
+      - IN: ddc-cluster
       - TASK: managed
     flags:
       - ddc
