@@ -1,15 +1,24 @@
 jobs:
-  - name: nginx-manifest-new
+  - name: man-prod9
     type: manifest
     steps:
-      - IN: nginx-image-new
+      - IN: nginx-prod9
       - TASK: managed
 
-  - name: ddc-deploy-new
+  - name: man-prod10
+    type: manifest
+    steps:
+      - IN: nginx-prod10
+      - IN: replicas
+      - IN: params
+      - IN: dockerOptions      
+      - TASK: managed
+
+  - name: ddc
     type: deploy
     steps:
-      - IN: nginx-manifest-new   
-      - IN: ddc-cluster-new
+      - IN: nginx-prod9   
+      - IN: nginx-prod10
       - TASK: managed
     flags:
-      - some_flags
+      - ddc
