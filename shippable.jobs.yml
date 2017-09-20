@@ -17,8 +17,8 @@ jobs:
   - name: ddc
     type: deploy
     steps:
-      - IN: nginx-prod9   
-      - IN: nginx-prod10
+      - IN: man-prod9  
+      - IN: man-prod10
       - TASK: managed
     flags:
       - ddc
