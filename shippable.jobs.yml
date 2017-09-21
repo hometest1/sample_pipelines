@@ -25,6 +25,17 @@ jobs:
     flags:
       - ddc
 
+  - name: ecs
+    type: deploy
+    steps:
+      - IN: man-prod9  
+      - IN: man-prod10
+      - IN: ecs-cluster
+      - TASK: managed
+        deployMethod: blueGreen
+    flags:
+      - ecs 
+
 resources:
   - name: nginx-prod10
     type: image
@@ -65,3 +76,10 @@ resources:
     integration: "ddc-subint"
     pointer:
       sourceName: "ddc-cluster"
+      
+  - name: ecs-cluster
+    type: cluster
+    integration: "ecs-subint"
+    pointer:
+      sourceName: "ecs-cluster"
+      region: us-west-2
