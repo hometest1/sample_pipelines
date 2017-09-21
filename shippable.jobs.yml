@@ -1,5 +1,10 @@
 jobs:
-  - name: man-prod9
+  - name: raw-manifest
+    type: manifest
+    steps:
+      - IN: package-raw-file
+
+   - name: man-prod9
     type: manifest
     steps:
       - IN: nginx-prod9
@@ -13,6 +18,15 @@ jobs:
       - IN: params
       - IN: dockerOptions      
       - TASK: managed
+
+  - name: cluster
+    type: deploy
+    steps:
+      - IN: raw-manifest    
+      - IN: node-cluster
+      - TASK: managed
+    flags:
+      - cluster
 
   - name: ddc
     type: deploy
@@ -108,6 +122,17 @@ resources:
     version:
       portMappings:
         - "80:80/tcp"  
+
+  - name: package-raw-file
+    type: file
+    pointer:
+      sourceName: https://raw.githubusercontent.com/shippableSamples/sample_pipelines/master/shippable.resources.yml
+    seed:
+      versionName: initial
+
+  - name: node-cluster
+    type: cluster
+    integration: node-subint
 
   - name: ddc-cluster
     type: cluster
