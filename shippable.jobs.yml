@@ -62,6 +62,18 @@ jobs:
     flags:
       - gke 
 
+  - name: triton
+    type: deploy
+    steps:
+      - IN: man-prod9  
+      - IN: man-prod10
+        switch: off      
+      - IN: triton-cluster
+      - TASK: managed
+        deployMethod: blueGreen
+    flags:
+      - triton 
+
 resources:
   - name: nginx-prod10
     type: image
@@ -122,3 +134,9 @@ resources:
     pointer:
       sourceName: "gke-cluster"
       region: us-west1-a
+
+  - name: triton-cluster
+    type: cluster
+    integration: "triton-subint"
+    pointer:
+      region: us-east-1
