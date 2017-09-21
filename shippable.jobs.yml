@@ -34,7 +34,7 @@ jobs:
         switch: off
       - IN: dcl-cluster
       - TASK: managed
-        deployMethod: blueGreen
+        deployMethod: remove
     flags:
       - dcl
 
