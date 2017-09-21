@@ -33,7 +33,6 @@ jobs:
       - IN: man-prod10
         switch: off
       - IN: dcl-cluster
-      - IN: replicas-1
       - TASK: managed
         deployMethod: blueGreen
     flags:
@@ -71,12 +70,7 @@ resources:
   - name: replicas
     type: replicas
     version:
-      count: 2
-
-  - name: replicas-1
-    type: replicas
-    version:
-      count: 2
+      count: 1
 
   - name: params
     type: params
