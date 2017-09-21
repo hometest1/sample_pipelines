@@ -76,6 +76,18 @@ jobs:
     flags:
       - gke 
 
+  - name: kubernetes
+    type: deploy
+    steps:
+      - IN: man-prod9  
+      - IN: man-prod10
+        switch: off      
+      - IN: kubernetes-cluster
+      - TASK: managed
+        deployMethod: blueGreen
+    flags:
+      - kubernetes 
+
   - name: triton
     type: deploy
     steps:
@@ -159,6 +171,10 @@ resources:
     pointer:
       sourceName: "gke-cluster"
       region: us-west1-a
+
+  - name: kubernetes-cluster
+    type: cluster
+    integration: "kube-subint"
 
   - name: triton-cluster
     type: cluster
