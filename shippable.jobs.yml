@@ -38,17 +38,17 @@ jobs:
     flags:
       - cluster
 
-#  - name: ddc
-#    type: deploy
-#    steps:
-#      - IN: man-prod9  
-#      - IN: man-prod10
-#        switch: off      
-#      - IN: ddc-cluster
-#      - TASK: managed
-#        deployMethod: scale
-#    flags:
-#      - ddc
+  - name: ddc
+    type: deploy
+    steps:
+      - IN: man-prod9  
+      - IN: man-prod10
+        switch: off      
+      - IN: ddc-cluster
+      - TASK: managed
+        deployMethod: blueGreen
+    flags:
+      - ddc
 
   - name: dcl
     type: deploy
