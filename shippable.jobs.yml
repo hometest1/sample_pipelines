@@ -58,7 +58,7 @@ jobs:
         switch: off
       - IN: dcl-cluster
       - TASK: managed
-        deployMethod: blueGreen
+        deployMethod: scale
     flags:
       - dcl
 
@@ -130,7 +130,7 @@ resources:
   - name: replicas
     type: replicas
     version:
-      count: 1
+      count: 0
 
   - name: params
     type: params
