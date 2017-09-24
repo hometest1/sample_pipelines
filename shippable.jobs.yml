@@ -46,7 +46,7 @@ jobs:
         switch: off      
       - IN: ddc-cluster
       - TASK: managed
-        deployMethod: remove
+        deployMethod: blueGreen
     flags:
       - ddc
 
