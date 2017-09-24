@@ -54,11 +54,11 @@ jobs:
     type: deploy
     steps:
       - IN: man-prod9  
-      - IN: man-prod10
+#      - IN: man-prod10
         switch: off
       - IN: dcl-cluster
       - TASK: managed
-        deployMethod: blueGreen
+        deployMethod: scale
     flags:
       - dcl
 
