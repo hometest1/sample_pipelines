@@ -58,7 +58,7 @@ jobs:
         switch: off
       - IN: dcl-cluster
       - TASK: managed
-        deployMethod: scale
+        deployMethod: replace
     flags:
       - dcl
 
