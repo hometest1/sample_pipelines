@@ -17,7 +17,9 @@ jobs:
   - name: azure
     type: deploy
     steps:
-      - IN: man-prod9      
+      - IN: man-prod9   
+      - IN: man-prod10
+        switch: off
       - IN: azure-cluster
       - TASK: managed
         deployMethod: remove
@@ -27,7 +29,9 @@ jobs:
   - name: ecs
     type: deploy
     steps:
-      - IN: man-prod9        
+      - IN: man-prod9  
+      - IN: man-prod10
+        switch: off
       - IN: ecs-cluster
       - TASK: managed
         deployMethod: blueGreen
