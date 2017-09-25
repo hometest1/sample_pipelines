@@ -63,8 +63,4 @@ resources:
 
   - name: azure-cluster
     type: cluster
-    integration: azure-subint
-
-  - name: node-cluster
-    type: cluster
-    integration: node-subint    
+    integration: azure-subint  
