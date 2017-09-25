@@ -56,7 +56,7 @@ jobs:
         switch: off      
       - IN: kubernetes-cluster
       - TASK: managed
-        deployMethod: replace
+        deployMethod: upgrade
     flags:
       - kubernetes 
 
