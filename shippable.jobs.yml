@@ -130,7 +130,7 @@ resources:
   - name: replicas
     type: replicas
     version:
-      count: 1
+      count: 2
 
   - name: params
     type: params
