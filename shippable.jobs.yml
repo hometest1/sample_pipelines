@@ -18,8 +18,6 @@ jobs:
     type: deploy
     steps:
       - IN: man-prod9   
-      - IN: man-prod10
-        switch: off
       - IN: azure-cluster
       - TASK: managed
         deployMethod: blueGreen
