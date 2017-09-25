@@ -22,7 +22,7 @@ jobs:
         switch: off
       - IN: azure-cluster
       - TASK: managed
-        deployMethod: remove
+        deployMethod: blueGreen
     flags:
       - azure
 
