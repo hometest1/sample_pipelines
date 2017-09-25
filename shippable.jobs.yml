@@ -56,7 +56,7 @@ jobs:
         switch: off      
       - IN: kubernetes-cluster
       - TASK: managed
-        deployMethod: upgrade
+        deployMethod: scale
     flags:
       - kubernetes 
 
@@ -80,7 +80,7 @@ resources:
   - name: replicas
     type: replicas
     version:
-      count: 1
+      count: 2
 
   - name: params
     type: params
