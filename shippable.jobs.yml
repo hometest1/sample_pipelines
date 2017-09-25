@@ -66,11 +66,11 @@ jobs:
     type: deploy
     steps:
       - IN: man-prod9  
-      - IN: man-prod10
-        switch: off      
+#      - IN: man-prod10
+#        switch: off      
       - IN: ecs-cluster
       - TASK: managed
-        deployMethod: upgrade
+        deployMethod: scale
     flags:
       - ecs 
 
