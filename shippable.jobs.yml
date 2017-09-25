@@ -102,7 +102,7 @@ jobs:
         switch: off      
       - IN: triton-cluster
       - TASK: managed
-        deployMethod: blueGreen
+        deployMethod: replace
     flags:
       - triton 
 
