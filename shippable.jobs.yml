@@ -19,8 +19,9 @@ jobs:
     steps:
       - IN: man-prod9   
       - IN: azure-cluster
+      - IN: replicas
       - TASK: managed
-        deployMethod: blueGreen
+        deployMethod: scale
     flags:
       - azure
 
@@ -44,7 +45,7 @@ resources:
   - name: replicas
     type: replicas
     version:
-      count: 1
+      count: 2
 
   - name: params
     type: params
