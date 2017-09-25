@@ -102,7 +102,7 @@ jobs:
         switch: off      
       - IN: triton-cluster
       - TASK: managed
-        deployMethod: scale
+        deployMethod: remove
     flags:
       - triton 
 
