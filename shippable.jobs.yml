@@ -30,7 +30,7 @@ jobs:
       - IN: man-prod9        
       - IN: ecs-cluster
       - TASK: managed
-        deployMethod: remove
+        deployMethod: blueGreen
     flags:
       - ecs
 
@@ -54,7 +54,7 @@ resources:
   - name: replicas
     type: replicas
     version:
-      count: 2
+      count: 1
 
   - name: params
     type: params
