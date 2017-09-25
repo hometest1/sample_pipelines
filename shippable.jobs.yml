@@ -1,14 +1,4 @@
 jobs:
-  - name: raw-manifest
-    type: manifest
-    steps:
-      - IN: package-raw-file
-
-  - name: jfrog-manifest
-    type: manifest
-    steps:
-      - IN: jfrog-file
-
   - name: man-prod9
     type: manifest
     steps:
@@ -89,13 +79,6 @@ resources:
       portMappings:
         - "80:80/tcp"
 
-  - name: package-raw-file
-    type: file
-    pointer:
-      sourceName: https://raw.githubusercontent.com/shippableSamples/sample_pipelines/master/shippable.resources.yml
-    seed:
-      versionName: initial
-
   - name: azure-cluster
     type: cluster
     integration: azure-subint
@@ -110,11 +93,3 @@ resources:
     pointer:
       sourceName: "ecs-cluster"
       region: us-west-2
-
-  - name: jfrog-file
-    type: file
-    integration: jfrog-subint
-    pointer:
-      sourceName: test-repository-local/package.json
-    seed:
-      versionName: initial
