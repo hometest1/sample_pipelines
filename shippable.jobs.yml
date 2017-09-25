@@ -38,18 +38,6 @@ jobs:
     flags:
       - cluster
 
-#  - name: ddc
-#    type: deploy
-#    steps:
-#      - IN: man-prod9  
-#      - IN: man-prod10
-#        switch: off      
-#      - IN: ddc-cluster
-#      - TASK: managed
-#        deployMethod: blueGreen
-#    flags:
-#      - ddc
-
   - name: dcl
     type: deploy
     steps:
@@ -93,18 +81,6 @@ jobs:
         deployMethod: blueGreen
     flags:
       - kubernetes 
-
-  - name: triton
-    type: deploy
-    steps:
-      - IN: man-prod9  
-      - IN: man-prod10
-        switch: off      
-      - IN: triton-cluster
-      - TASK: managed
-        deployMethod: blueGreen
-    flags:
-      - triton 
 
 resources:
   - name: nginx-prod10
@@ -155,12 +131,6 @@ resources:
   - name: node-cluster
     type: cluster
     integration: node-subint
-
-  - name: ddc-cluster
-    type: cluster
-    integration: "ddc-subint"
-    pointer:
-      sourceName: "ddc-cluster"
       
   - name: dcl-cluster
     type: cluster
@@ -185,9 +155,3 @@ resources:
   - name: kubernetes-cluster
     type: cluster
     integration: "kube-subint"
-
-  - name: triton-cluster
-    type: cluster
-    integration: "triton-subint"
-    pointer:
-      region: us-east-1
