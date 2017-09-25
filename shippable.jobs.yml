@@ -4,6 +4,11 @@ jobs:
     steps:
       - IN: package-raw-file
 
+  - name: jfrog-manifest
+    type: manifest
+    steps:
+      - IN: jfrog-file
+
   - name: man-prod9
     type: manifest
     steps:
@@ -32,7 +37,8 @@ jobs:
   - name: cluster
     type: deploy
     steps:
-      - IN: raw-manifest    
+      - IN: raw-manifest
+      - IN: jfrog-manifest
       - IN: node-cluster
       - TASK: managed
     flags:
@@ -104,3 +110,11 @@ resources:
     pointer:
       sourceName: "ecs-cluster"
       region: us-west-2
+
+  - name: jfrog-file
+    type: file
+    integration: jfrog-subint
+    pointer:
+      sourceName: test-repository-local/package.json
+    seed:
+      versionName: initial
