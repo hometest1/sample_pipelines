@@ -70,7 +70,7 @@ jobs:
         switch: off      
       - IN: ecs-cluster
       - TASK: managed
-        deployMethod: replace
+        deployMethod: upgrade
     flags:
       - ecs 
 
