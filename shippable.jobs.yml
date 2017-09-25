@@ -63,9 +63,7 @@ jobs:
   - name: ecs
     type: deploy
     steps:
-      - IN: man-prod9  
-      - IN: man-prod10
-        switch: off      
+      - IN: man-prod9        
       - IN: ecs-cluster
       - TASK: managed
         deployMethod: remove
