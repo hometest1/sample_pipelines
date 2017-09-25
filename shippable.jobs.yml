@@ -44,7 +44,7 @@ jobs:
       - IN: man-prod9
       - IN: dcl-cluster
       - TASK: managed
-        deployMethod: blueGreen
+        deployMethod: upgrade
     flags:
       - dcl
 
