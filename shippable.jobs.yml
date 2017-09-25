@@ -56,7 +56,7 @@ jobs:
         switch: off      
       - IN: kubernetes-cluster
       - TASK: managed
-        deployMethod: remove
+        deployMethod: blueGreen
     flags:
       - kubernetes 
 
