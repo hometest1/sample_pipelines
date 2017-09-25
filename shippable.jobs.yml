@@ -44,7 +44,7 @@ jobs:
       - IN: man-prod9
       - IN: dcl-cluster
       - TASK: managed
-        deployMethod: upgrade
+        deployMethod: remove
     flags:
       - dcl
 
