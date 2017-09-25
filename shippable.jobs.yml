@@ -38,16 +38,6 @@ jobs:
     flags:
       - cluster
 
-  - name: dcl
-    type: deploy
-    steps:
-      - IN: man-prod9
-      - IN: dcl-cluster
-      - TASK: managed
-        deployMethod: upgrade
-    flags:
-      - dcl
-
   - name: ecs
     type: deploy
     steps:
@@ -130,13 +120,7 @@ resources:
 
   - name: node-cluster
     type: cluster
-    integration: node-subint
-      
-  - name: dcl-cluster
-    type: cluster
-    integration: "dcl-subint"
-    pointer:
-      sourceName: "dcl-cluster"      
+    integration: node-subint    
       
   - name: ecs-cluster
     type: cluster
