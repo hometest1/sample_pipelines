@@ -46,19 +46,7 @@ jobs:
       - TASK: managed
         deployMethod: remove
     flags:
-      - ecs 
-
-  - name: gke
-    type: deploy
-    steps:
-      - IN: man-prod9  
-      - IN: man-prod10
-        switch: off      
-      - IN: gke-cluster
-      - TASK: managed
-        deployMethod: blueGreen
-    flags:
-      - gke 
+      - ecs
 
   - name: kubernetes
     type: deploy
@@ -128,13 +116,6 @@ resources:
     pointer:
       sourceName: "ecs-cluster"
       region: us-west-2
-
-  - name: gke-cluster
-    type: cluster
-    integration: "gke-subint"
-    pointer:
-      sourceName: "gke-cluster"
-      region: us-west1-a
 
   - name: kubernetes-cluster
     type: cluster
