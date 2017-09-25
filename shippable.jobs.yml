@@ -21,7 +21,7 @@ jobs:
       - IN: azure-cluster
       - IN: replicas
       - TASK: managed
-        deployMethod: replace
+        deployMethod: remove
     flags:
       - azure
 
