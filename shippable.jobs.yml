@@ -56,7 +56,7 @@ jobs:
         switch: off      
       - IN: gke-cluster
       - TASK: managed
-        deployMethod: scale
+        deployMethod: remove
     flags:
       - gke 
 
