@@ -14,16 +14,6 @@ jobs:
       - IN: dockerOptions      
       - TASK: managed
 
-  - name: azure
-    type: deploy
-    steps:
-      - IN: man-prod9   
-      - IN: azure-cluster
-      - IN: replicas
-      - TASK: managed
-        deployMethod: blueGreen
-    flags:
-      - azure
 
 resources:
   - name: nginx-prod10
