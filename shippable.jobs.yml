@@ -24,16 +24,6 @@ jobs:
     flags:
       - azure
 
-  - name: cluster
-    type: deploy
-    steps:
-      - IN: raw-manifest
-      - IN: jfrog-manifest
-      - IN: node-cluster
-      - TASK: managed
-    flags:
-      - cluster
-
   - name: ecs
     type: deploy
     steps:
