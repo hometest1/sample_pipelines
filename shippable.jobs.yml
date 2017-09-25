@@ -21,7 +21,7 @@ jobs:
       - IN: azure-cluster
       - IN: replicas
       - TASK: managed
-        deployMethod: scale
+        deployMethod: upgrade
     flags:
       - azure
 
