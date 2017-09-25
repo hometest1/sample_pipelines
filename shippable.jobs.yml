@@ -20,7 +20,7 @@ jobs:
       - IN: man-prod9      
       - IN: azure-cluster
       - TASK: managed
-        deployMethod: blueGreen
+        deployMethod: remove
     flags:
       - azure
 
