@@ -34,7 +34,7 @@ jobs:
         switch: off
       - IN: ecs-cluster
       - TASK: managed
-        deployMethod: remove
+        deployMethod: blueGreen
     flags:
       - ecs
 
