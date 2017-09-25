@@ -48,18 +48,6 @@ jobs:
     flags:
       - ecs
 
-  - name: kubernetes
-    type: deploy
-    steps:
-      - IN: man-prod9  
-      - IN: man-prod10
-        switch: off      
-      - IN: kubernetes-cluster
-      - TASK: managed
-        deployMethod: blueGreen
-    flags:
-      - kubernetes 
-
 resources:
   - name: nginx-prod10
     type: image
@@ -116,7 +104,3 @@ resources:
     pointer:
       sourceName: "ecs-cluster"
       region: us-west-2
-
-  - name: kubernetes-cluster
-    type: cluster
-    integration: "kube-subint"
