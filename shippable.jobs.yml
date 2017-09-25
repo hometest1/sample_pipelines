@@ -70,7 +70,7 @@ jobs:
         switch: off      
       - IN: ecs-cluster
       - TASK: managed
-        deployMethod: blueGreen
+        deployMethod: replace
     flags:
       - ecs 
 
