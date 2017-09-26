@@ -5,6 +5,12 @@ jobs:
       - IN: nginx-prod9
       - TASK: managed
 
+  - name: man-prod11
+    type: manifest
+    steps:
+      - IN: nginx-prod11
+      - TASK: managed
+
   - name: man-prod10
     type: manifest
     steps:
@@ -13,6 +19,17 @@ jobs:
       - IN: params
       - IN: dockerOptions      
       - TASK: managed
+
+  - name: azure
+    type: deploy
+    method: upgrade
+    workflow: parallel
+    steps:
+      - IN: man-prod9
+      - IN: man-prod11  
+      - TASK: managed
+        deployMethod: blueGreen
+        deployOptions: serial
 
 
 resources:
@@ -23,6 +40,14 @@ resources:
       sourceName: "ankul/nginx"
     seed:
       versionName: prod.10
+
+  - name: nginx-prod11
+    type: image
+    integration: "docker-subint"
+    pointer:
+      sourceName: "ankul/nginx"
+    seed:
+      versionName: prod.11
 
   - name: nginx-prod9
     type: image
