@@ -30,7 +30,8 @@ jobs:
       - IN: azure-cluster
       - TASK: managed
 #        deployMethod: blueGreen
-        deployOptions: parallel
+        deployOptions: 
+          - parallel
 
 
 resources:
