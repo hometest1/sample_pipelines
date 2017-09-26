@@ -23,14 +23,14 @@ jobs:
   - name: azure
     type: deploy
     method: upgrade
-    workflow: parallel
+#    workflow: parallel
     steps:
       - IN: man-prod9
       - IN: man-prod11
       - IN: azure-cluster
       - TASK: managed
-        deployMethod: blueGreen
-        deployOptions: serial
+#        deployMethod: blueGreen
+        deployOptions: parallel
 
 
 resources:
