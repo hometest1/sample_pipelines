@@ -1,14 +1,13 @@
 jobs:
+  - name: raw-manifest
+    type: manifest
+    steps:
+      - IN: package-raw-file
+
   - name: man-prod9
     type: manifest
     steps:
       - IN: nginx-prod9
-      - TASK: managed
-
-  - name: man-prod11
-    type: manifest
-    steps:
-      - IN: nginx-prod11
       - TASK: managed
 
   - name: man-prod10
@@ -22,17 +21,94 @@ jobs:
 
   - name: azure
     type: deploy
-    method: upgrade
-    workflow: parallel
     steps:
-      - IN: man-prod9
-      - IN: man-prod11
+      - IN: man-prod9      
       - IN: azure-cluster
       - TASK: managed
-        #deployMethod: replace
-        #deployOptions: 
-          #- parallel
+        deployMethod: blueGreen
+    flags:
+      - azure
 
+  - name: cluster
+    type: deploy
+    steps:
+      - IN: raw-manifest    
+      - IN: node-cluster
+      - TASK: managed
+    flags:
+      - cluster
+
+#  - name: ddc
+#    type: deploy
+#    steps:
+#      - IN: man-prod9  
+#      - IN: man-prod10
+#        switch: off      
+#      - IN: ddc-cluster
+#      - TASK: managed
+#        deployMethod: blueGreen
+#    flags:
+#      - ddc
+
+  - name: dcl
+    type: deploy
+    steps:
+      - IN: man-prod9  
+      - IN: man-prod10
+        switch: off
+      - IN: dcl-cluster
+      - TASK: managed
+        deployMethod: upgrade
+    flags:
+      - dcl
+
+  - name: ecs
+    type: deploy
+    steps:
+      - IN: man-prod9  
+      - IN: man-prod10
+        switch: off      
+      - IN: ecs-cluster
+      - TASK: managed
+        deployMethod: blueGreen
+    flags:
+      - ecs 
+
+  - name: gke
+    type: deploy
+    steps:
+      - IN: man-prod9  
+      - IN: man-prod10
+        switch: off      
+      - IN: gke-cluster
+      - TASK: managed
+        deployMethod: blueGreen
+    flags:
+      - gke 
+
+  - name: kubernetes
+    type: deploy
+    steps:
+      - IN: man-prod9  
+      - IN: man-prod10
+        switch: off      
+      - IN: kubernetes-cluster
+      - TASK: managed
+        deployMethod: blueGreen
+    flags:
+      - kubernetes 
+
+  - name: triton
+    type: deploy
+    steps:
+      - IN: man-prod9  
+      - IN: man-prod10
+        switch: off      
+      - IN: triton-cluster
+      - TASK: managed
+        deployMethod: blueGreen
+    flags:
+      - triton 
 
 resources:
   - name: nginx-prod10
@@ -42,14 +118,6 @@ resources:
       sourceName: "ankul/nginx"
     seed:
       versionName: prod.10
-
-  - name: nginx-prod11
-    type: image
-    integration: "docker-subint"
-    pointer:
-      sourceName: "ankul/nginx"
-    seed:
-      versionName: prod.11
 
   - name: nginx-prod9
     type: image
@@ -62,7 +130,7 @@ resources:
   - name: replicas
     type: replicas
     version:
-      count: 2
+      count: 1
 
   - name: params
     type: params
@@ -77,6 +145,53 @@ resources:
       portMappings:
         - "80:80/tcp"
 
+  - name: package-raw-file
+    type: file
+    pointer:
+      sourceName: https://raw.githubusercontent.com/shippableSamples/sample_pipelines/master/shippable.resources.yml
+    seed:
+      versionName: initial
+
   - name: azure-cluster
     type: cluster
-    integration: azure-subint  
+    integration: azure-subint
+
+  - name: node-cluster
+    type: cluster
+    integration: node-subint
+
+  - name: ddc-cluster
+    type: cluster
+    integration: "ddc-subint"
+    pointer:
+      sourceName: "ddc-cluster"
+      
+  - name: dcl-cluster
+    type: cluster
+    integration: "dcl-subint"
+    pointer:
+      sourceName: "dcl-cluster"      
+      
+  - name: ecs-cluster
+    type: cluster
+    integration: "ecs-subint"
+    pointer:
+      sourceName: "ecs-cluster"
+      region: us-west-2
+
+  - name: gke-cluster
+    type: cluster
+    integration: "gke-subint"
+    pointer:
+      sourceName: "gke-cluster"
+      region: us-west1-a
+
+  - name: kubernetes-cluster
+    type: cluster
+    integration: "kube-subint"
+
+  - name: triton-cluster
+    type: cluster
+    integration: "triton-subint"
+    pointer:
+      region: us-east-1
