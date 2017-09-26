@@ -26,7 +26,8 @@ jobs:
     workflow: parallel
     steps:
       - IN: man-prod9
-      - IN: man-prod11  
+      - IN: man-prod11
+      - IN: azure-cluster
       - TASK: managed
         deployMethod: blueGreen
         deployOptions: serial
