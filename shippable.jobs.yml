@@ -11,38 +11,21 @@ jobs:
       - IN: nginx-prod11
       - TASK: managed
 
-  - name: man-prod10
-    type: manifest
-    steps:
-      - IN: nginx-prod10
-      - IN: replicas
-      - IN: params
-      - IN: dockerOptions      
-      - TASK: managed
-
-  - name: azure
+  - name: ddc
     type: deploy
-    method: remove
+    method: upgrade
     workflow: parallel
     steps:
       - IN: man-prod9
       - IN: man-prod11
-      - IN: azure-cluster
+      - IN: ddc-cluster
       - TASK: managed
-        #deployMethod: replace
-        #deployOptions: 
-          #- parallel
+        deployMethod: replace
+        deployOptions: 
+          - parallel
 
 
 resources:
-  - name: nginx-prod10
-    type: image
-    integration: "docker-subint"
-    pointer:
-      sourceName: "ankul/nginx"
-    seed:
-      versionName: prod.10
-
   - name: nginx-prod11
     type: image
     integration: "docker-subint"
@@ -59,24 +42,8 @@ resources:
     seed:
       versionName: prod.9
 
-  - name: replicas
-    type: replicas
-    version:
-      count: 2
-
-  - name: params
-    type: params
-    version:
-      params:
-        API_URL: https://localhost:3000
-        WWW_URL: https://localhost:8080
-
-  - name: dockerOptions
-    type: dockerOptions
-    version:
-      portMappings:
-        - "80:80/tcp"
-
-  - name: azure-cluster
+  - name: ddc-cluster
     type: cluster
-    integration: azure-subint  
+    integration: "ddc-subint"
+    pointer:
+      sourceName: "ddc-cluster"
