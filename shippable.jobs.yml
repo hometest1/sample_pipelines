@@ -22,7 +22,7 @@ jobs:
 
   - name: azure
     type: deploy
-    method: upgrade
+    method: remove
     workflow: parallel
     steps:
       - IN: man-prod9
