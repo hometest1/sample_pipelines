@@ -13,14 +13,14 @@ jobs:
 
   - name: ddc
     type: deploy
-    method: upgrade
+    #method: upgrade
     #workflow: parallel
     steps:
       - IN: man-prod9
       - IN: man-prod11
       - IN: ddc-cluster
       - TASK: managed
-        #deployMethod: replace
+        deployMethod: replace
         deployOptions: 
           - parallel
 
