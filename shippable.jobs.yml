@@ -24,6 +24,15 @@ jobs:
         #deployOptions: 
           #- parallel
 
+  - name: ecs
+    type: deploy
+    method: replace
+    steps:
+      - IN: man-prod9
+      - IN: man-prod11
+      - IN: ddc-cluster
+      - TASK: managed
+
 
 resources:
   - name: nginx-prod11
@@ -47,3 +56,10 @@ resources:
     integration: "ddc-subint"
     pointer:
       sourceName: "ddc-cluster"
+
+  - name: ecs-cluster
+    type: cluster
+    integration: "ecs-subint"
+    pointer:
+      sourceName: "ecs-cluster"
+      region: us-west-2
