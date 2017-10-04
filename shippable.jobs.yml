@@ -30,7 +30,7 @@ jobs:
     steps:
       - IN: man-prod9
       - IN: man-prod11
-      - IN: ddc-cluster
+      - IN: ecs-cluster
       - TASK: managed
 
 
