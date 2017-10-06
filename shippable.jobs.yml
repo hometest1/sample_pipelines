@@ -3,7 +3,7 @@ jobs:
     type: runSh
     steps:
       - IN: ozan_pay_img
-      - IN: ozan-pay_gitrepo
+      - IN: ozan-pay_gitrepo-1
       - TASK:
         - script: echo OZAN_PAY_GITREPO_PATH
         - script: printenv
