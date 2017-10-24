@@ -8,7 +8,7 @@ jobs:
 
   - name: sample-runSh
     type: runSh
-    architecture: x86_64
+    architecture: aarch64
     os: Ubuntu_16.04
     steps:
       - IN: dv-scaler
