@@ -17,14 +17,13 @@ jobs:
     flags:
       - runSh 
 
-#  - name: runSh-Job
-#    type: runSh
-#    steps:
-#      - IN: nginx-manifest-1
-#      - TASK:
-#        - script: sudo apt-get install tree
-#        - script: tree -F IN
-#        - script: sleep 300
-#    on_success:
-#      - script: echo "successfully completed"
-#      - NOTIFY: hipchat-notifications
+  - name: runSh-Job
+    type: runSh
+    steps:
+      - IN: nginx-manifest-1
+      - TASK:
+        - script: sudo apt-get install tree
+        - script: tree -F IN
+        - script: sleep 3
+    on_success:
+      - script: echo "successfully completed"
