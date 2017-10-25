@@ -27,3 +27,15 @@ jobs:
         - script: sleep 3
     on_success:
       - script: echo "successfully completed"
+      
+
+  - name: runSh-Job-2
+    type: runSh
+    steps:
+      - IN: nginx-manifest-1
+      - TASK:
+        - script: sudo apt-get install tree
+        - script: tree -F IN
+        - script: sleep 3
+    on_success:
+      - script: echo "successfully completed"      
